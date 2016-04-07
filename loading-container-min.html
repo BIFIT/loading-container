@@ -1,0 +1,66 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+
+<dom-module id="loading-container">
+
+  <template>
+
+    <style>
+      :host {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+        transition-delay: 1.5s;
+        transition: background 2s;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: transparent;
+        pointer-events: none;
+      }
+
+      #spinner {
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+      }
+
+      .loading-text {
+        position: absolute;
+        left: 0;
+        right: 0;
+        text-align: center;
+        display: block;
+        top: calc(50% + 1em);
+        color: #3EA1E6;
+      }
+
+      :host[loading] {
+        background: rgba(200, 206, 213, .5);
+        pointer-events: all;
+      }
+
+    </style>
+
+    <div id="loadingContainer">
+      <paper-spinner id="spinner"
+                     active$="[[loading]]"></paper-spinner>
+
+      <span class="loading-text"
+            hidden$="[[!loading]]">
+        Отправка запроса на сервер
+      </span>
+    </div>
+
+  </template>
+  
+  <script>"use strict";new Polymer({is:"loading-container",properties:{loading:{reflectToAttribute:!0,type:Boolean,value:!1}}});</script>
+
+</dom-module>

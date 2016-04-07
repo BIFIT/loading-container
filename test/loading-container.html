@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>basic tests</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../../../../bower_components/web-component-tester/browser.js"></script>
+  <script src="../../../../../bower_components/test-fixture/test-fixture-mocha.js"></script>
+  <script src="../../../../../bower_components/iron-test-helpers/mock-interactions.js"></script>
+
+  <link rel="import" href="../../../../../bower_components/test-fixture/test-fixture.html">
+  <link rel="import" href="../loading-container-min.html">
+</head>
+<body>
+
+<test-fixture id="Element">
+  <template>
+    <loading-container loading></loading-container>
+  </template>
+</test-fixture>
+
+<script>
+  suite('<loading-container>', function () {
+    var element;
+
+    setup(function (done) {
+      element = fixture('Element');
+      done();
+    });
+
+    test('loading', function (done) {
+
+      element.set('loading', true);
+      assert.equal(window.getComputedStyle(element).pointerEvents, 'all');
+
+      element.set('loading', false);
+      assert.equal(window.getComputedStyle(element).pointerEvents, 'none');
+
+      done();
+
+    });
+
+  });
+
+</script>
+</body>
+</html>
