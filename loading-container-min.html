@@ -5,14 +5,19 @@
   <template>
 
     <style>
+
+      :host {
+        --loading-time: 1.5s;
+      }
+
       :host {
         position: absolute;
         display: flex;
         justify-content: center;
         align-items: center;
         z-index: 10;
-        transition-delay: 1.5s;
-        transition: background 2s;
+        transition-delay: .5s;
+        transition: background var(--loading-time);
         left: 0;
         right: 0;
         top: 0;
@@ -40,11 +45,14 @@
         display: block;
         top: calc(50% + 1em);
         color: #3EA1E6;
+        opacity: 0;
+        transition: opacity var(--loading-time);
       }
 
       :host[loading] {
         background: rgba(200, 206, 213, .5);
         pointer-events: all;
+        opacity: 1;
       }
 
     </style>
